@@ -1,0 +1,34 @@
+<div style="background-color:#19143E">
+<div class ="jumbotron text-center" style=" background-color:#19143E">
+    <h1 class="dispaly-4" style="color:white">Corona Covid-19 tracker</h1>
+</div>
+    <hr>
+    <app-dashboard-card [totalConfirmed]='totalConfirmed' [totalActive]='totalActive' [totalRecovered]='totalRecovered' [totalDeath]='totalDeath'></app-dashboard-card>
+    <hr>
+    <div class="ui form">
+      <div class="inline fields">
+        <label for="casetype" class="radio-inline" style="margin:10px;color:white">Select Case Type:</label>
+            <input type="radio" value='c' id='c' #c (click)='updateChart(c)' name="casetype" checked="" tabindex="0" class="hidden">
+            <label  for='c' style="margin:10px ;color:white ">Confirmed</label>
+            <input type="radio" value='d'  id='d' #d (click)='updateChart(d)'name="casetype" tabindex="0" class="hidden">
+            <label for='d'  class="radio-inline" style="margin:10px;color:white">Deaths</label>
+            <input type="radio"  value='r' id='r' #r (click)='updateChart(r)' name="casetype" tabindex="0" class="hidden">
+            <label  for='r' style="margin:10px;color: white;">Recovered</label>
+            <input type="radio" value='a' id='a'  #a (click)='updateChart(a)' name="casetype" tabindex="0" class="hidden">
+            <label for ='a' style="margin:10px;color: white;">Active</label>
+      </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+
+          <google-chart [type]='chart.PieChart' [data]='datatable' [options]='chart.options' style="width:100%;" [height]='chart.height'></google-chart>
+
+        </div>
+          <div class="col-md-6">
+            <google-chart [type]='chart.ColumnChart'  [height]='chart.height' [options]='chart.options'  style="width:100%;"style="width:100%;" [data]='datatable'></google-chart>
+      </div>
+      </div>
+    
+    
+   
